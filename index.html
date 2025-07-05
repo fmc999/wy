@@ -148,14 +148,6 @@
                 opacity: 0;
                 transition: opacity 0.3s;
             }
-            body {
-                min-height: 100vh;
-                background: radial-gradient(ellipse at bottom, #0a0f2a 0%, #030412 100%);
-                color: var(--text-primary);
-                overflow-x: hidden;
-                position: relative;
-            }
-            
             .galaxy-bg {
                 position: fixed;
                 top: 0;
@@ -168,7 +160,6 @@
                     radial-gradient(circle at 70% 80%, rgba(18, 78, 148, 0.4) 0%, transparent 40%),
                     radial-gradient(circle at 50% 50%, rgba(42, 11, 91, 0.3) 0%, transparent 60%);
             }
-            
             .nebula-layer {
                 position: fixed;
                 top: 0;
@@ -181,7 +172,6 @@
                     radial-gradient(ellipse at 80% 70%, rgba(0, 153, 255, 0.2) 0%, transparent 60%);
                 animation: nebula-rotate 120s linear infinite;
             }
-            
             .stars {
                 position: fixed;
                 top: 0;
@@ -190,7 +180,6 @@
                 height: 100%;
                 z-index: -2;
             }
-            
             .star {
                 position: absolute;
                 background: white;
@@ -342,32 +331,16 @@
 
         <!-- 行动按钮 -->
         <div class="text-center mt-12">
-            <a href="#" onclick="showWiFiModal(); return false;" class="inline-block bg-accent text-dark font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/90 transition-all duration-300 btn-glow relative overflow-hidden">
+            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-accent text-dark font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/90 transition-all duration-300 btn-glow relative overflow-hidden">
                 <span class="relative z-10">立即购买固件</span>
                 <span class="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent transform -translate-x-full skew-x-12 animate-pulse-slow"></span>
             </a>
-            <a href="#" onclick="showWiFiModal(); return false;" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
+            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
                 <span class="relative z-10">申请试用</span>
                 <span class="absolute inset-0 bg-accent/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </a>
             <p class="text-textSecondary mt-4">安全支付 | 30天无理由退款 | 专业技术支持</p>
         </div>
-    </div>
-
-    <!-- WiFi 确认模态框 -->
-    <div id="wifiModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-        <div class="bg-[rgba(18,23,40,0.95)] p-8 rounded-xl glass-effect relative z-10">
-            <h2 class="text-xl font-bold mb-4 text-light">你是否关闭主机 WiFi 网卡？</h2>
-            <div class="flex justify-center space-x-4">
-                <button onclick="closeModal(); window.location.href='https://qm.qq.com/q/6dpINzd9Ic'" class="bg-accent text-dark font-bold px-6 py-2 rounded-full">
-                    我已关闭
-                </button>
-                <button onclick="closeModal(); window.location.href='bios-wifi-guide.html'" class="bg-transparent border-2 border-accent text-accent font-bold px-6 py-2 rounded-full">
-                    我去关闭
-                </button>
-            </div>
-        </div>
-        <div class="fixed inset-0 bg-black opacity-70"></div>
     </div>
 
     <!-- 粒子效果库 -->
@@ -503,18 +476,6 @@
                     card.style.transform = `translateY(${scrollY * 0.01 - index * 5}px)`;
                 });
             });
-
-            // 显示 WiFi 确认模态框
-            function showWiFiModal() {
-                const modal = document.getElementById('wifiModal');
-                modal.classList.remove('hidden');
-            }
-
-            // 关闭 WiFi 确认模态框
-            function closeModal() {
-                const modal = document.getElementById('wifiModal');
-                modal.classList.add('hidden');
-            }
         });
     </script>
 </body>
