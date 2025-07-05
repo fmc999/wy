@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOS 关闭 WiFi 教程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0A1128;
+            color: #ffffff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .vendor-section {
+            margin-bottom: 4rem;
+        }
+        .vendor-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #4b5563;
+            padding-bottom: 0.5rem;
+        }
+        .step {
+            margin-bottom: 3rem;
+        }
+        .step-image {
+            max-width: 800px;
+            margin: 1rem 0;
+            border-radius: 8px;
+            display: none; /* 默认隐藏图片 */
+        }
+        .show-image-btn {
+            background-color: #66b3ff;
+            color: #0A1128;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .show-image-btn:hover {
+            background-color: rgba(102, 179, 255, 0.9);
+        }
+        .purchase-btn {
+            background-color: #66b3ff;
+            color: #0A1128;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto 2rem;
+            text-align: center;
+            max-width: 200px;
+        }
+        .purchase-btn:hover {
+            background-color: rgba(102, 179, 255, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://qm.qq.com/q/6dpINzd9Ic" class="purchase-btn">你关闭 WiFi 了？点我购买试用</a>
+        <h1 class="text-3xl font-bold mb-6">不同主板厂商 BIOS 关闭 WiFi 教程</h1>
+
+        <!-- 华硕主板 -->
+        <div class="vendor-section">
+            <h2 class="vendor-title">华硕（ASUS）主板</h2>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 1：进入 BIOS</h3>
+                <p class="mb-2">开机时连续按下 <strong>Del</strong> 键进入 BIOS 设置界面。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'hs.jpg')">显示图片</button>
+                <img src="hs.jpg" alt="华硕主板进入 BIOS 界面" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 2：找到网络设置</h3>
+                <p class="mb-2">切换到 <strong>Advanced</strong> 选项卡，找到 <strong>Onboard Devices Configuration</strong>。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'hs.jpg')">显示图片</button>
+                <img src="hs.jpg" alt="华硕主板找到网络设置" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 3：关闭 WiFi</h3>
+                <p class="mb-2">在网络设置中找到 <strong>Wireless LAN</strong> 选项，将其设置为 <strong>Disabled</strong>。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'hs.jpg')">显示图片</button>
+                <img src="hs.jpg" alt="华硕主板关闭 WiFi" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 4：保存并退出</h3>
+                <p class="mb-2">按 <strong>F10</strong> 键，选择 <strong>Yes</strong> 保存设置并退出 BIOS。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'hs.jpg')">显示图片</button>
+                <img src="hs.jpg" alt="华硕主板保存并退出 BIOS" class="step-image">
+            </div>
+        </div>
+
+        <!-- 微星主板 -->
+        <div class="vendor-section">
+            <h2 class="vendor-title">微星（MSI）主板</h2>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 1：进入 BIOS</h3>
+                <p class="mb-2">开机时连续按下 <strong>Del</strong> 或 <strong>F2</strong> 键进入 BIOS 设置界面。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'wx.jpg')">显示图片</button>
+                <img src="wx.jpg" alt="微星主板进入 BIOS 界面" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 2：找到网络设置</h3>
+                <p class="mb-2">在 <strong>Advanced</strong> 菜单下找到 <strong>Network Stack Configuration</strong>。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'wx.jpg')">显示图片</button>
+                <img src="wx.jpg" alt="微星主板找到网络设置" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 3：关闭 WiFi</h3>
+                <p class="mb-2">在网络设置中找到 <strong>Wireless LAN Controller</strong> 选项，将其设置为 <strong>Disabled</strong>。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'wx.jpg')">显示图片</button>
+                <img src="wx.jpg" alt="微星主板关闭 WiFi" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 4：保存并退出</h3>
+                <p class="mb-2">按 <strong>F10</strong> 键，选择 <strong>Yes</strong> 保存设置并退出 BIOS。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'wx.jpg')">显示图片</button>
+                <img src="wx.jpg" alt="微星主板保存并退出 BIOS" class="step-image">
+            </div>
+        </div>
+
+        <!-- 联想笔记本 -->
+        <div class="vendor-section">
+            <h2 class="vendor-title">联想（Lenovo）笔记本</h2>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 1：进入 BIOS</h3>
+                <p class="mb-2">开机时连续按下 <strong>F1</strong> 或 <strong>Fn + F1</strong> 键进入 BIOS 设置界面。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'lx.jpg')">显示图片</button>
+                <img src="lx.jpg" alt="联想笔记本进入 BIOS 界面" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 2：找到网络设置</h3>
+                <p class="mb-2">在 <strong>Config</strong> 菜单下找到 <strong>Network</strong> 选项。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'lx.jpg')">显示图片</button>
+                <img src="lx.jpg" alt="联想笔记本找到网络设置" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 3：关闭 WiFi</h3>
+                <p class="mb-2">在网络设置中找到 <strong>Wireless LAN</strong> 选项，将其设置为 <strong>Disabled</strong>。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'lx.jpg')">显示图片</button>
+                <img src="lx.jpg" alt="联想笔记本关闭 WiFi" class="step-image">
+            </div>
+            <div class="step">
+                <h3 class="text-xl font-semibold mb-2">步骤 4：保存并退出</h3>
+                <p class="mb-2">按 <strong>F10</strong> 键，选择 <strong>Yes</strong> 保存设置并退出 BIOS。</p>
+                <button class="show-image-btn" onclick="showImage(this, 'lx.jpg')">显示图片</button>
+                <img src="lx.jpg" alt="联想笔记本保存并退出 BIOS" class="step-image">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showImage(button, imageSrc) {
+            const image = button.nextElementSibling;
+            if (image.style.display === 'none') {
+                image.style.display = 'block';
+                button.textContent = '隐藏图片';
+            } else {
+                image.style.display = 'none';
+                button.textContent = '显示图片';
+            }
+        }
+    </script>
+</body>
+</html>
