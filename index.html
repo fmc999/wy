@@ -13,15 +13,13 @@
                     colors: {
                         primary: '#165DFF',
                         secondary: '#0A1128',
-                        accent: '#00F5D4',
+                        accent: '#66b3ff',
                         dark: '#070a1a',
-                        light: '#ffffff',
-                        textSecondary: '#d1d5db',
+                        light: '#f0f9ff',
+                        textSecondary: '#aab9d9',
                         warning: '#ff7b7b',
                         success: '#4dee9d',
-                        codeBg: 'rgba(10, 15, 30, 0.7)',
-                        cardBg: 'rgba(10, 17, 40, 0.8)',
-                        borderColor: '#121B33'
+                        codeBg: 'rgba(10, 15, 30, 0.7)'
                     },
                     fontFamily: {
                         orbitron: ['Orbitron', 'Segoe UI', 'sans-serif'],
@@ -48,8 +46,8 @@
                             '50%': { transform: 'translateY(-10px)' }
                         },
                         glow: {
-                            '0%': { textShadow: '0 0 5px rgba(0, 245, 212, 0.5)' },
-                            '100%': { textShadow: '0 0 20px rgba(0, 245, 212, 0.8), 0 0 30px rgba(0, 245, 212, 0.6)' }
+                            '0%': { textShadow: '0 0 5px rgba(102, 179, 255, 0.5)' },
+                            '100%': { textShadow: '0 0 20px rgba(102, 179, 255, 0.8), 0 0 30px rgba(22, 93, 255, 0.6)' }
                         },
                         flow: {
                             '0%': { backgroundPosition: '0% 50%' },
@@ -80,7 +78,7 @@
                         },
                         line-pulse: {
                             '0%, 100%': { opacity: 0.6 },
-                            '50%': { opacity: 1, boxShadow: '0 0 30px rgba(0, 245, 212, 0.9)' }
+                            '50%': { opacity: 1, boxShadow: '0 0 30px rgba(136, 204, 255, 0.9)' }
                         },
                         panel-float: {
                             '0%, 100%': { transform: 'translateY(0) rotate(0.5deg)' },
@@ -102,18 +100,18 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .glass-effect {
-                background: rgba(10, 17, 40, 0.8);
+                background: rgba(18, 23, 40, 0.85);
                 backdrop-filter: blur(12px);
-                border: 1px solid #121B33;
+                border: 1px solid rgba(120, 180, 255, 0.2);
                 transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
                 animation: panel-float 9s infinite ease-in-out;
             }
             .glass-effect:hover {
-                border-color: #00F5D4;
-                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 245, 212, 0.9);
+                border-color: rgba(136, 204, 255, 0.4);
+                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(136, 204, 255, 0.9);
             }
             .neon-border {
-                box-shadow: 0 0 20px rgba(0, 245, 212, 0.6);
+                box-shadow: 0 0 20px rgba(102, 179, 255, 0.6);
             }
             .scan-line {
                 position: absolute;
@@ -121,7 +119,7 @@
                 left: 0;
                 width: 100%;
                 height: 2px;
-                background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.5), transparent);
+                background: linear-gradient(90deg, transparent, rgba(102, 179, 255, 0.5), transparent);
                 animation: scan 3s ease-in-out infinite;
             }
             .mouse-trail {
@@ -129,8 +127,8 @@
                 width: 12px;
                 height: 12px;
                 border-radius: 50%;
-                background: rgba(0, 245, 212, 0.4);
-                box-shadow: 0 0 15px rgba(0, 245, 212, 0.7);
+                background: rgba(136, 204, 255, 0.4);
+                box-shadow: 0 0 15px rgba(136, 204, 255, 0.7);
                 pointer-events: none;
                 z-index: 9999;
                 transform: translate(-50%, -50%);
@@ -142,8 +140,8 @@
                 width: 8px;
                 height: 8px;
                 border-radius: 50%;
-                background: rgba(0, 245, 212, 0.3);
-                box-shadow: 0 0 10px rgba(0, 245, 212, 0.5);
+                background: rgba(136, 204, 255, 0.3);
+                box-shadow: 0 0 10px rgba(136, 204, 255, 0.5);
                 pointer-events: none;
                 z-index: 9998;
                 transform: translate(-50%, -50%);
@@ -152,8 +150,8 @@
             }
             body {
                 min-height: 100vh;
-                background: #0A1128;
-                color: #ffffff;
+                background: radial-gradient(ellipse at bottom, #0a0f2a 0%, #030412 100%);
+                color: var(--text-primary);
                 overflow-x: hidden;
                 position: relative;
             }
@@ -203,7 +201,7 @@
         }
     </style>
 </head>
-<body class="bg-secondary text-light min-h-screen overflow-x-hidden relative">
+<body class="bg-dark text-light min-h-screen overflow-x-hidden relative">
     <!-- 银河背景 -->
     <div class="galaxy-bg"></div>
     <div class="nebula-layer"></div>
@@ -229,7 +227,7 @@
                 <img src="example.jpg" alt="MODDIY 固件" class="w-auto h-12 neon-border">
                 <span class="text-2xl md:text-3xl font-bold text-accent animate-gradient-shine">MODDIY</span>
             </div>
-            <h1 class="text-[clamp(2.8rem,6vw,4.2rem)] font-bold mb-2 relative text-light">
+            <h1 class="text-[clamp(2.8rem,6vw,4.2rem)] font-bold mb-2 relative">
                 固件价格与服务说明
                 <span class="absolute bottom-[-12px] left-1/4 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-accent to-transparent animate-line-pulse"></span>
             </h1>
@@ -261,7 +259,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <!-- 试用规则 -->
             <div class="glass-effect p-6 rounded-xl">
-                <div class="flex justify-between items-center mb-6 pb-4 border-b border-[#121B33]">
+                <div class="flex justify-between items-center mb-6 pb-4 border-b border-[rgba(120,180,255,0.2)]">
                     <div class="flex items-center gap-4">
                         <i class="fa fa-sliders text-accent text-2xl animate-icon-pulse"></i>
                         <h2 class="text-xl font-bold text-light">试用规则</h2>
@@ -289,7 +287,7 @@
 
             <!-- 售后政策 -->
             <div class="glass-effect p-6 rounded-xl">
-                <div class="flex justify-between items-center mb-6 pb-4 border-b border-[#121B33]">
+                <div class="flex justify-between items-center mb-6 pb-4 border-b border-[rgba(120,180,255,0.2)]">
                     <div class="flex items-center gap-4">
                         <i class="fa fa-shield text-accent text-2xl animate-icon-pulse"></i>
                         <h2 class="text-xl font-bold text-light">售后政策</h2>
@@ -318,7 +316,7 @@
 
         <!-- WiFi固件提示 -->
         <div class="glass-effect p-6 rounded-xl max-w-3xl mx-auto mt-12">
-            <div class="flex justify-between items-center mb-6 pb-4 border-b border-[#121B33]">
+            <div class="flex justify-between items-center mb-6 pb-4 border-b border-[rgba(120,180,255,0.2)]">
                 <div class="flex items-center gap-4">
                     <i class="fa fa-wifi text-accent text-2xl animate-icon-pulse"></i>
                     <h2 class="text-xl font-bold text-light">刷入后WiFi固件提示</h2>
@@ -344,16 +342,32 @@
 
         <!-- 行动按钮 -->
         <div class="text-center mt-12">
-            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-accent text-dark font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/90 transition-all duration-300 btn-glow relative overflow-hidden">
+            <a href="#" onclick="showWiFiModal(); return false;" class="inline-block bg-accent text-dark font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/90 transition-all duration-300 btn-glow relative overflow-hidden">
                 <span class="relative z-10">立即购买固件</span>
                 <span class="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent transform -translate-x-full skew-x-12 animate-pulse-slow"></span>
             </a>
-            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
+            <a href="#" onclick="showWiFiModal(); return false;" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
                 <span class="relative z-10">申请试用</span>
                 <span class="absolute inset-0 bg-accent/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </a>
             <p class="text-textSecondary mt-4">安全支付 | 30天无理由退款 | 专业技术支持</p>
         </div>
+    </div>
+
+    <!-- WiFi 确认模态框 -->
+    <div id="wifiModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="bg-[rgba(18,23,40,0.95)] p-8 rounded-xl glass-effect relative z-10">
+            <h2 class="text-xl font-bold mb-4 text-light">你是否关闭主机 WiFi 网卡？</h2>
+            <div class="flex justify-center space-x-4">
+                <button onclick="closeModal(); window.location.href='https://qm.qq.com/q/6dpINzd9Ic'" class="bg-accent text-dark font-bold px-6 py-2 rounded-full">
+                    我已关闭
+                </button>
+                <button onclick="closeModal(); window.location.href='bios-wifi-guide.html'" class="bg-transparent border-2 border-accent text-accent font-bold px-6 py-2 rounded-full">
+                    我去关闭
+                </button>
+            </div>
+        </div>
+        <div class="fixed inset-0 bg-black opacity-70"></div>
     </div>
 
     <!-- 粒子效果库 -->
@@ -363,14 +377,14 @@
         particlesJS("particles-js", {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#00F5D4" },
+                color: { value: "#66b3ff" },
                 shape: { type: "circle" },
                 opacity: { value: 0.5, random: true },
                 size: { value: 3, random: true },
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: "#00F5D4",
+                    color: "#66b3ff",
                     opacity: 0.2,
                     width: 1
                 },
@@ -474,11 +488,11 @@
             buttons.forEach(button => {
                 button.addEventListener('mouseenter', function() {
                     this.classList.add('scale-105');
-                    this.style.boxShadow = '0 0 25px rgba(0, 245, 212, 0.7)';
+                    this.style.boxShadow = '0 0 25px rgba(102, 179, 255, 0.7)';
                 });
                 button.addEventListener('mouseleave', function() {
                     this.classList.remove('scale-105');
-                    this.style.boxShadow = '0 0 15px rgba(0, 245, 212, 0.5)';
+                    this.style.boxShadow = '0 0 15px rgba(102, 179, 255, 0.5)';
                 });
             });
 
@@ -489,6 +503,18 @@
                     card.style.transform = `translateY(${scrollY * 0.01 - index * 5}px)`;
                 });
             });
+
+            // 显示 WiFi 确认模态框
+            function showWiFiModal() {
+                const modal = document.getElementById('wifiModal');
+                modal.classList.remove('hidden');
+            }
+
+            // 关闭 WiFi 确认模态框
+            function closeModal() {
+                const modal = document.getElementById('wifiModal');
+                modal.classList.add('hidden');
+            }
         });
     </script>
 </body>
