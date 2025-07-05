@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODDIY - 固件价格与服务说明</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#0A1128',
+                        accent: '#00F5D4',
+                        dark: '#03071E',
+                        light: '#F8F9FA',
+                        neon: '#00F5D4',
+                        cyber: '#7928CA',
+                        matrix: '#00FF41'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'flow': 'flow 15s linear infinite',
+                        'scan': 'scan 3s ease-in-out infinite',
+                        'fade-out': 'fadeOut 1s ease forwards' // 新增淡出动画
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%': { textShadow: '0 0 5px rgba(0, 245, 212, 0.5)' },
+                            '100%': { textShadow: '0 0 20px rgba(0, 245, 212, 0.8), 0 0 30px rgba(22, 93, 255, 0.6)' }
+                        },
+                        flow: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' }
+                        },
+                        scan: {
+                            '0%, 100%': { opacity: '0' },
+                            '50%': { opacity: '0.5' }
+                        },
+                        fadeOut: { // 定义淡出动画关键帧
+                            '0%': { opacity: 1, visibility: 'visible' },
+                            '100%': { opacity: 0, visibility: 'hidden' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-effect {
+                background: rgba(10, 17, 40, 0.7);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                transition: all 0.3s ease;
+            }
+            .glass-effect:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+            }
+            .text-glow {
+                text-shadow: 0 0 10px rgba(22, 93, 255, 0.5);
+            }
+            .btn-glow {
+                position: relative;
+                overflow: hidden;
+            }
+            .btn-glow::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 245, 212, 0.3) 0%, transparent 70%);
+                transform: scale(0);
+                opacity: 0;
+                transition: transform 0.5s ease, opacity 0.5s ease;
+            }
+            .btn-glow:hover::before {
+                transform: scale(1);
+                opacity: 1;
+            }
+            .bg-grid {
+                background-size: 40px 40px;
+                background-image: 
+                    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            }
+            .bg-flow {
+                background: linear-gradient(90deg, #03071E, #0A1128, #165DFF, #03071E);
+                background-size: 300% 300%;
+                animation: flow 15s ease infinite;
+            }
+            .neon-border {
+                box-shadow: 0 0 5px rgba(0, 245, 212, 0.5),
+                            0 0 10px rgba(0, 245, 212, 0.3),
+                            inset 0 0 5px rgba(0, 245, 212, 0.1);
+            }
+            .scan-line {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.5), transparent);
+                animation: scan 3s ease-in-out infinite;
+            }
+            .mouse-trail {
+                position: absolute;
+                pointer-events: none;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(0, 245, 212, 0.8) 0%, rgba(0, 245, 212, 0) 70%);
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark text-light min-h-screen overflow-x-hidden relative">
+    <!-- 开屏画面 -->
+    <div id="splashScreen" class="fixed inset-0 z-50 bg-dark flex flex-col justify-center items-center">
+        <img src="example.jpg" alt="MODDIY 固件" class="w-auto h-24 neon-border mb-4">
+        <div class="text-2xl font-bold text-neon animate-glow">MODDIY</div>
+        <div class="text-gray-400 mt-4">正在加载...</div>
+    </div>
+
+    <!-- 鼠标轨迹容器 -->
+    <div id="mouseTrail"></div>
+
+    <!-- 科幻风格动态背景 -->
+    <div class="fixed inset-0 z-0 opacity-70">
+        <div class="absolute inset-0 bg-flow"></div>
+        <div class="absolute inset-0 bg-grid"></div>
+        <div id="particles-js" class="absolute inset-0"></div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <!-- 标题区域 -->
+        <div class="text-center mb-12 animate-float relative">
+            <div class="flex justify-center items-center space-x-4 mb-4">
+                <!-- 放置 logo -->
+                <img src="example.jpg" alt="MODDIY 固件" class="w-auto h-12 neon-border">
+                <span class="text-2xl md:text-3xl font-bold text-glow">MODDIY</span>
+            </div>
+            <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-2">固件价格与服务说明</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">专业固件定制服务，透明化收费标准与售后保障</p>
+            <!-- 移除显示运行时间的元素 -->
+        </div>
+
+        <!-- 价格卡片 -->
+        <div class="glass-effect p-8 rounded-2xl max-w-2xl mx-auto mb-12 neon-border relative overflow-hidden">
+            <div class="scan-line"></div>
+            <div class="text-center mb-6">
+                <span class="text-5xl font-bold text-neon block">¥600</span>
+                <p class="text-gray-300 mt-1 text-lg">2个月使用时间</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <div class="flex items-start">
+                    <i class="fa fa-check text-neon mt-1 mr-3"></i>
+                    <span>已试用用户优惠价：¥550 <span class="text-neon/80 text-sm">(仅限一次)</span></span>
+                </div>
+                <div class="flex items-start">
+                    <i class="fa fa-check text-neon mt-1 mr-3"></i>
+                    <span>单设备试用仅需¥50调试费（可抵用，单台设备限试用1次）</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服务规则区域 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <!-- 试用规则 -->
+            <div class="glass-effect p-6 rounded-xl">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fa fa-sliders text-neon mr-2"></i>试用规则
+                </h2>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start">
+                        <i class="fa fa-info-circle text-neon mt-1 mr-2"></i>
+                        <span>收取50元调试费（费用不退），购买固件时可抵50元</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-info-circle text-neon mt-1 mr-2"></i>
+                        <span>单台设备仅限试用1次，双机无盘需提前告知</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-info-circle text-neon mt-1 mr-2"></i>
+                        <span>APEX、港瓦设备不保证可通过屏蔽检测</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-info-circle text-neon mt-1 mr-2"></i>
+                        <span>带WiFi网卡设备试用前需在BIOS中关闭WiFi</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 售后政策 -->
+            <div class="glass-effect p-6 rounded-xl">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fa fa-shield text-neon mr-2"></i>售后政策
+                </h2>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-neon mt-1 mr-2"></i>
+                        <span>刷入后14天内因固件问题无法使用可退款</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-neon mt-1 mr-2"></i>
+                        <span>提供1个月质保服务，免费修复固件相关问题</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-neon mt-1 mr-2"></i>
+                        <span>7x24小时技术支持，可远程协助解决问题</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-neon mt-1 mr-2"></i>
+                        <span>非固件原因（如硬件损坏）不适用退换政策</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- WiFi固件提示 -->
+        <div class="glass-effect p-6 rounded-xl max-w-3xl mx-auto mt-12">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fa fa-wifi text-neon mr-2"></i>刷入后WiFi固件提示
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-primary/10 p-4 rounded-lg transform transition hover:scale-105 hover:shadow-lg hover:shadow-neon/20">
+                    <h3 class="font-bold mb-2 text-neon">开机检查</h3>
+                    <p class="text-gray-300">
+                        开机后立即检查WiFi是否显示，若未显示请重启设备，
+                        首次启动可能需要2-3次加载。
+                    </p>
+                </div>
+                <div class="bg-primary/10 p-4 rounded-lg transform transition hover:scale-105 hover:shadow-lg hover:shadow-neon/20">
+                    <h3 class="font-bold mb-2 text-neon">使用前确认</h3>
+                    <p class="text-gray-300">
+                        进入游戏前再次确认WiFi状态，若多次重启仍无效，
+                        请联系我们进行远程协助调试。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行动按钮 -->
+        <div class="text-center mt-12">
+            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-neon text-dark font-bold px-8 py-3 rounded-full text-lg hover:bg-neon/90 transition-all duration-300 btn-glow relative overflow-hidden">
+                <span class="relative z-10">立即购买固件</span>
+                <span class="absolute inset-0 bg-gradient-to-r from-transparent via-neon/30 to-transparent transform -translate-x-full skew-x-12 animate-pulse-slow"></span>
+            </a>
+            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-transparent border-2 border-neon text-neon font-bold px-8 py-3 rounded-full text-lg hover:bg-neon/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
+                <span class="relative z-10">申请试用</span>
+                <span class="absolute inset-0 bg-neon/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            </a>
+            <p class="text-gray-400 mt-4">安全支付 | 30天无理由退款 | 专业技术支持</p>
+        </div>
+    </div>
+
+    <!-- 粒子效果库 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 粒子效果配置
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#00F5D4" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00F5D4",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                    push: { particles_nb: 3 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // 鼠标轨迹特效
+        document.addEventListener('DOMContentLoaded', function() {
+            const mouseTrail = document.getElementById('mouseTrail');
+            const trailElements = [];
+            const maxElements = 15; // 轨迹点数量
+            
+            // 创建轨迹元素池
+            for (let i = 0; i < maxElements; i++) {
+                const element = document.createElement('div');
+                element.className = 'mouse-trail';
+                element.style.width = `${10 + i * 1.5}px`;
+                element.style.height = `${10 + i * 1.5}px`;
+                element.style.opacity = `${1 - i * 0.06}`;
+                element.style.transition = `opacity 0.5s ease, transform 0.5s ease`;
+                mouseTrail.appendChild(element);
+                trailElements.push(element);
+            }
+            
+            // 鼠标移动处理 - 添加页面滚动偏移量计算
+            document.addEventListener('mousemove', function(e) {
+                const x = e.clientX + window.scrollX;
+                const y = e.clientY + window.scrollY;
+                
+                // 将最后一个元素移到最前面
+                const element = trailElements.pop();
+                element.style.left = `${x}px`;
+                element.style.top = `${y}px`;
+                element.style.opacity = '1';
+                trailElements.unshift(element);
+                
+                // 淡出最后一个元素
+                setTimeout(() => {
+                    element.style.opacity = '0';
+                }, 100);
+            });
+            
+            // 触摸支持（移动端） - 添加页面滚动偏移量计算
+            document.addEventListener('touchmove', function(e) {
+                if (e.touches.length > 0) {
+                    const touch = e.touches[0];
+                    const x = touch.clientX + window.scrollX;
+                    const y = touch.clientY + window.scrollY;
+                    
+                    // 防止页面滚动
+                    e.preventDefault();
+                    
+                    // 将最后一个元素移到最前面
+                    const element = trailElements.pop();
+                    element.style.left = `${x}px`;
+                    element.style.top = `${y}px`;
+                    element.style.opacity = '1';
+                    trailElements.unshift(element);
+                    
+                    // 淡出最后一个元素
+                    setTimeout(() => {
+                        element.style.opacity = '0';
+                    }, 100);
+                }
+            }, { passive: false });
+            
+            // 页面加载动画
+            const fadeElements = document.querySelectorAll('.glass-effect, h1, h2, p');
+            fadeElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // 按钮悬停动效
+            const buttons = document.querySelectorAll('.btn-glow');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.classList.add('scale-105');
+                    this.style.boxShadow = '0 0 25px rgba(0, 245, 212, 0.7)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.classList.remove('scale-105');
+                    this.style.boxShadow = '0 0 15px rgba(0, 245, 212, 0.5)';
+                });
+            });
+            
+            // 滚动视差效果
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY;
+                document.querySelectorAll('.glass-effect').forEach((card, index) => {
+                    card.style.transform = `translateY(${scrollY * 0.01 - index * 5}px)`;
+                });
+            });
+        });
+
+        // 页面加载完成后隐藏开屏画面
+        window.addEventListener('load', function() {
+            const splashScreen = document.getElementById('splashScreen');
+            splashScreen.classList.add('animate-fade-out');
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+            }, 1000); // 等待动画完成后隐藏元素
+        });
+    </script>
+</body>
+</html>
