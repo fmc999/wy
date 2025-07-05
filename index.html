@@ -92,13 +92,6 @@
     </style>
 </head>
 <body class="bg-dark text-light min-h-screen overflow-x-hidden relative">
-    <!-- 开屏画面 -->
-    <div id="splashScreen" class="fixed inset-0 z-50 bg-dark flex flex-col justify-center items-center">
-        <img src="example.jpg" alt="MODDIY 固件" class="w-auto h-24 neon-border mb-4">
-        <div class="text-2xl font-bold text-neon animate-glow">MODDIY</div>
-        <div class="text-gray-400 mt-4">正在加载...</div>
-    </div>
-
     <!-- 鼠标轨迹容器 -->
     <div id="mouseTrail"></div>
 
@@ -366,15 +359,6 @@
                     card.style.transform = `translateY(${scrollY * 0.01 - index * 5}px)`;
                 });
             });
-        });
-
-        // 页面加载完成后隐藏开屏画面
-        window.addEventListener('load', function() {
-            const splashScreen = document.getElementById('splashScreen');
-            splashScreen.classList.add('animate-fade-out');
-            setTimeout(() => {
-                splashScreen.style.display = 'none';
-            }, 1000); // 等待动画完成后隐藏元素
         });
     </script>
 </body>
