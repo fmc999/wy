@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MODDIY - 固件价格与服务说明</title>
+    <title>MODDIY - 专注于游戏体验优化</title>
+    <!-- 外部资源引入 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Tailwind 配置 -->
     <script>
         tailwind.config = {
             theme: {
@@ -99,6 +102,8 @@
             }
         }
     </script>
+    
+    <!-- 自定义工具类与样式 -->
     <style type="text/tailwindcss">
         @layer utilities {
             .glass-effect {
@@ -157,7 +162,6 @@
                 overflow-x: hidden;
                 position: relative;
             }
-            
             .galaxy-bg {
                 position: fixed;
                 top: 0;
@@ -170,7 +174,6 @@
                     radial-gradient(circle at 70% 80%, rgba(18, 78, 148, 0.4) 0%, transparent 40%),
                     radial-gradient(circle at 50% 50%, rgba(42, 11, 91, 0.3) 0%, transparent 60%);
             }
-            
             .nebula-layer {
                 position: fixed;
                 top: 0;
@@ -183,7 +186,6 @@
                     radial-gradient(ellipse at 80% 70%, rgba(0, 153, 255, 0.2) 0%, transparent 60%);
                 animation: nebula-rotate 120s linear infinite;
             }
-            
             .stars {
                 position: fixed;
                 top: 0;
@@ -192,7 +194,6 @@
                 height: 100%;
                 z-index: -2;
             }
-            
             .star {
                 position: absolute;
                 background: white;
@@ -203,29 +204,29 @@
         }
     </style>
 </head>
+
 <body class="bg-secondary text-light min-h-screen overflow-x-hidden relative">
-    <!-- 银河背景 -->
+    <!-- 背景图层：银河、星云、星星 -->
     <div class="galaxy-bg"></div>
     <div class="nebula-layer"></div>
     <div class="stars">
-        <!-- 可以动态生成星星 -->
+        <!-- 动态生成星星（JS控制） -->
     </div>
 
     <!-- 鼠标轨迹容器 -->
     <div id="mouseTrail"></div>
     <div id="trails"></div>
 
-    <!-- 科幻风格动态背景 -->
+    <!-- 科幻风格粒子背景 -->
     <div class="fixed inset-0 z-0 opacity-70">
         <div id="particles-js" class="absolute inset-0"></div>
     </div>
 
-    <!-- 主内容 -->
-    <div class="container mx-auto px-4 py-8 relative z-10">
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-8 relative z-10">
         <!-- 标题区域 -->
-        <div class="text-center mb-12 animate-float relative animate-header-appear">
+        <section class="text-center mb-12 animate-float relative animate-header-appear">
             <div class="flex justify-center items-center space-x-4 mb-4">
-                <!-- 放置 logo -->
                 <img src="example.jpg" alt="MODDIY 固件" class="w-auto h-12 neon-border">
                 <span class="text-2xl md:text-3xl font-bold text-accent animate-gradient-shine">MODDIY</span>
             </div>
@@ -236,45 +237,38 @@
             <p class="text-textSecondary max-w-2xl mx-auto text-[clamp(1.1rem,2.2vw,1.3rem)]">
                 专业固件定制服务，透明化收费标准与售后保障
             </p>
-        </div>
+        </section>
 
         <!-- 价格卡片 -->
-        <div class="glass-effect p-8 rounded-2xl max-w-2xl mx-auto mb-12 neon-border relative overflow-hidden">
+        <section class="glass-effect p-8 rounded-2xl max-w-2xl mx-auto mb-12 neon-border relative overflow-hidden">
             <div class="scan-line"></div>
             <div class="text-center mb-6">
                 <span class="text-5xl font-bold text-accent block">¥600</span>
                 <p class="text-textSecondary mt-1 text-lg">2个月使用时间</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <div class="flex items-start">
-                    <i class="fa fa-check text-accent mt-1 mr-3"></i>
-                    <span>已试用用户优惠价：¥550 <span class="text-accent/80 text-sm">(仅限一次)</span></span>
-                </div>
-                <div class="flex items-start">
-                    <i class="fa fa-check text-accent mt-1 mr-3"></i>
-                    <span>单设备试用仅需¥50调试费（可抵用，单台设备限试用1次）</span>
-                </div>
-            </div>
-        </div>
+                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+    <div class="flex items-start">
+        <i class="fa fa-check text-accent mt-1 mr-3"></i>
+        <!-- 修改文字颜色类名 -->
+        <span id="jumpToTrial" class="text-blue-400 text-lg hover:underline cursor-pointer">Moddiy固件支持试用，点我~</span>
+    </div>
+</div>
+        </section>
 
         <!-- 服务规则区域 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <!-- 试用规则 -->
             <div class="glass-effect p-6 rounded-xl">
                 <div class="flex justify-between items-center mb-6 pb-4 border-b border-[#121B33]">
                     <div class="flex items-center gap-4">
                         <i class="fa fa-sliders text-accent text-2xl animate-icon-pulse"></i>
-                        <h2 class="text-xl font-bold text-light">试用规则</h2>
+                        <h2 class="text-xl font-bold text-light">固件前置</h2>
                     </div>
                 </div>
                 <ul class="space-y-3 text-textSecondary">
                     <li class="flex items-start">
                         <i class="fa fa-info-circle text-accent mt-1 mr-2"></i>
-                        <span>收取50元调试费（费用不退），购买固件时可抵50元</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fa fa-info-circle text-accent mt-1 mr-2"></i>
-                        <span>单台设备仅限试用1次，双机无盘需提前告知</span>
+                        <span>双机无盘，无序需提前告知</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fa fa-info-circle text-accent mt-1 mr-2"></i>
@@ -310,25 +304,74 @@
                     </li>
                     <li class="flex items-start">
                         <i class="fa fa-check-circle text-accent mt-1 mr-2"></i>
-                        <span>非固件原因不适用退换政策</span>
+                        <span>非固件原因，不适用退换政策</span>
                     </li>
                 </ul>
             </div>
+        </section>
+<!-- 视频展示区域 -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto my-12">
+    <!-- 左侧视频 -->
+    <div class="aspect-video relative glass-effect p-4 rounded-lg">
+        <div class="overflow-hidden rounded-lg relative h-full">
+            <video 
+                class="absolute top-0 left-0 w-full h-full object-cover rounded-lg" 
+                controls 
+                autoplay 
+                muted 
+                loop
+            >
+                <source src="video2.mp4" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
         </div>
+    </div>
+    <!-- 右侧视频 -->
+    <div class="aspect-video relative glass-effect p-4 rounded-lg">
+        <div class="overflow-hidden rounded-lg relative h-full">
+            <video 
+                class="absolute top-0 left-0 w-full h-full object-cover rounded-lg" 
+                controls 
+                autoplay 
+                muted 
+                loop
+            >
+                <source src="video.mp4" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
+        </div>
+    </div>
+</section>
+
+       <!-- 固件说明文案 -->
+<section class="grid grid-cols-1 max-w-4xl mx-auto my-16 px-4 md:px-0">
+    <div class="glass-effect p-8 rounded-3xl space-y-6">
+        <div class="flex items-center gap-4">
+            <i class="fa fa-info-circle text-accent text-3xl animate-icon-pulse"></i>
+            <h2 class="text-2xl font-bold text-light tracking-wide">固件说明</h2>
+        </div>
+        <div class="text-textSecondary text-lg leading-relaxed">
+            <p>
+                我们的固件经过多轮严格测试,已实现与各类主流设备的兼容，且能持续保障运行过程中的稳定。    
+                支持所有游戏所有平台所有检测不会被检测到固件而拉闸。
+            </p>
+        </div>
+    </div>
+</section>
 
         <!-- WiFi固件提示 -->
-        <div class="glass-effect p-6 rounded-xl max-w-3xl mx-auto mt-12">
+        <section class="glass-effect p-6 rounded-xl max-w-3xl mx-auto mt-12">
             <div class="flex justify-between items-center mb-6 pb-4 border-b border-[#121B33]">
                 <div class="flex items-center gap-4">
                     <i class="fa fa-wifi text-accent text-2xl animate-icon-pulse"></i>
-                    <h2 class="text-xl font-bold text-light">刷入后WiFi固件提示</h2>
+                    <h2 class="text-xl font-bold text-light">网卡固件提示</h2>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-codeBg p-4 rounded-lg transform transition hover:scale-105 hover:shadow-lg hover:shadow-accent/20">
                     <h3 class="font-bold mb-2 text-accent">开机检查</h3>
                     <p class="text-textSecondary">
-                        开机后立即检查WiFi是否显示，若未显示请重启设备。
+                        开机后立即检查WiFi是否显示，是否打开wifi，如若打开请关闭
                     </p>
                 </div>
                 <div class="bg-codeBg p-4 rounded-lg transform transition hover:scale-105 hover:shadow-lg hover:shadow-accent/20">
@@ -339,29 +382,104 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 行动按钮 -->
-        <div class="text-center mt-12">
-            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-accent text-dark font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/90 transition-all duration-300 btn-glow relative overflow-hidden">
+        <!-- 行动按钮区域 -->
+        <section class="text-center mt-12">
+            <a id="buyFirmware" href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-accent text-dark font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/90 transition-all duration-300 btn-glow relative overflow-hidden">
                 <span class="relative z-10">立即购买固件</span>
                 <span class="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent transform -translate-x-full skew-x-12 animate-pulse-slow"></span>
             </a>
-            <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
+            <a id="applyTrial" href="#" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-8 py-3 rounded-full text-lg hover:bg-accent/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
                 <span class="relative z-10">申请试用</span>
                 <span class="absolute inset-0 bg-accent/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </a>
-            <!-- 新增关闭WiFi网卡教程按钮 -->
             <a href="https://bios.fmc911.top" class="inline-block bg-transparent border-2 border-success text-success font-bold px-8 py-3 rounded-full text-lg hover:bg-success/10 transition-all duration-300 btn-glow mt-4 md:mt-0 md:ml-4 relative overflow-hidden">
-                <span class="relative z-10">关闭WiFi网卡教程</span>
+                <span class="relative z-10">关闭WiFi网卡教程(根据自己的设备来关闭)</span>
                 <span class="absolute inset-0 bg-success/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </a>
             <p class="text-textSecondary mt-4">专业技术支持</p>
+        </section>
+    </main>
+
+    <!-- 试用模态框 -->
+    <div id="trialModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black bg-opacity-50">
+        <div class="glass-effect p-8 rounded-2xl max-w-2xl relative">
+            <button id="closeModal" class="absolute top-4 right-4 text-accent hover:text-light transition">
+                <i class="fa fa-times"></i>
+            </button>
+            <h2 class="text-2xl font-bold text-light mb-4">试用详情</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="flex items-start">
+                    <i class="fa fa-check text-accent mt-1 mr-3"></i>
+                    <span>单设备试用仅需¥50调试费试用时间是7天（可抵用，单台设备限试用1次， <span class="text-accent font-bold">此费用不退</span>）请提供使用的是否是无盘系统丶无序，会提供相应可以加载的专属设备。</span>
+                </div>
+                <div class="flex items-start">
+                    <i class="fa fa-check text-accent mt-1 mr-3"></i>
+                    <span>已试用用户优惠价：¥550 <span class="text-accent/80 text-sm">(仅限一次)</span></span>
+                </div>
+                <div class="mt-4 border-t border-[#121B33] pt-4">
+                    <h3 class="text-lg font-bold text-light mb-2">固件使用规则</h3>
+                    <ul class="space-y-2 text-textSecondary">
+                        <li class="flex items-start">
+                            <i class="fa fa-info-circle text-accent mt-1 mr-2"></i>
+                            <span>请提供使用的是否是无盘系统丶无序，会提供相应可以加载的专属设备。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-info-circle text-accent mt-1 mr-2"></i>
+                            <span>APEX、港瓦设备不保证可通过屏蔽检测</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-info-circle text-accent mt-1 mr-2"></i>
+                            <span>带WiFi网卡设备试用前需在BIOS中关闭WiFi</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <!-- 使用 flex 和 justify-center 让按钮水平排列并居中 -->
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-accent text-dark font-bold px-6 py-2 rounded-full text-lg hover:bg-accent/90 transition-all duration-300">
+                        点我加群(固件咨询询问管理)
+                    </a>
+                    <!-- 新增按钮 -->
+                    <a href="https://bios.fmc911.top" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-6 py-2 rounded-full text-lg hover:bg-accent/10 transition-all duration-300">
+                        你主机没关 wifi 网卡吗点我关闭
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 购买提示弹窗 -->
+    <div id="buyPromptModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black bg-opacity-50">
+        <div class="glass-effect p-8 rounded-2xl max-w-2xl relative">
+            <button id="closeBuyPromptModal" class="absolute top-4 right-4 text-accent hover:text-light transition">
+                <i class="fa fa-times"></i>
+            </button>
+            <h2 class="text-2xl font-bold text-light mb-4">购买提示</h2>
+            <div class="space-y-4 text-textSecondary">
+                <p>APEX、港瓦设备不保证可通过屏蔽检测</p>
+                <p class="text-accent font-bold">主机带WiFi网卡设备试用前需在BIOS中关闭WiFi</p>
+                <p class="text-accent font-bold">请提供使用的是否是无盘系统丶无序，会提供相应可以加载的专属设备。</p>
+                <div class="text-center">
+                    <a href="https://bios.fmc911.top" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-6 py-2 rounded-full text-lg hover:bg-accent/10 transition-all duration-300">
+                        关闭WiFi网卡教程
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <a href="https://qm.qq.com/q/6dpINzd9Ic" class="inline-block bg-accent text-dark font-bold px-6 py-2 rounded-full text-lg hover:bg-accent/90 transition-all duration-300">
+                    点我加群(固件咨询询问管理)
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- 粒子效果库 -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- 交互脚本 -->
     <script>
         // 粒子效果配置
         particlesJS("particles-js", {
@@ -436,7 +554,7 @@
                         trail.style.opacity = 0.8 - index * 0.1;
                     }, delay);
                 });
-            });
+            }, { passive: false });
 
             // 触摸支持（移动端）
             document.addEventListener('touchmove', function(e) {
@@ -492,6 +610,56 @@
                 document.querySelectorAll('.glass-effect').forEach((card, index) => {
                     card.style.transform = `translateY(${scrollY * 0.01 - index * 5}px)`;
                 });
+            });
+
+            // 模态框交互逻辑
+            const applyTrialBtn = document.getElementById('applyTrial');
+            const trialModal = document.getElementById('trialModal');
+            const closeModalBtn = document.getElementById('closeModal');
+
+            applyTrialBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                trialModal.classList.remove('hidden');
+            });
+
+            closeModalBtn.addEventListener('click', function() {
+                trialModal.classList.add('hidden');
+            });
+
+            // 点击模态框外部关闭
+            window.addEventListener('click', function(e) {
+                if (e.target === trialModal) {
+                    trialModal.classList.add('hidden');
+                }
+            });
+
+            // 购买提示弹窗交互逻辑
+            const buyFirmwareBtn = document.getElementById('buyFirmware');
+            const buyPromptModal = document.getElementById('buyPromptModal');
+            const closeBuyPromptModalBtn = document.getElementById('closeBuyPromptModal');
+
+            buyFirmwareBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                buyPromptModal.classList.remove('hidden');
+            });
+
+            closeBuyPromptModalBtn.addEventListener('click', function() {
+                buyPromptModal.classList.add('hidden');
+            });
+
+            // 点击购买提示弹窗外部关闭
+            window.addEventListener('click', function(e) {
+                if (e.target === buyPromptModal) {
+                    buyPromptModal.classList.add('hidden');
+                }
+            });
+
+            const jumpToTrial = document.getElementById('jumpToTrial');
+            const trialModal2 = document.getElementById('trialModal');
+
+            jumpToTrial.addEventListener('click', function(e) {
+                e.preventDefault();
+                trialModal2.classList.remove('hidden');
             });
         });
     </script>
