@@ -246,13 +246,13 @@
                 <span class="text-5xl font-bold text-accent block">¥600</span>
                 <p class="text-textSecondary mt-1 text-lg">2个月使用时间</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <div class="flex items-start">
-                    <i class="fa fa-check text-accent mt-1 mr-3"></i>
-                    <!-- 添加 text-lg 类增大文字字号 -->
-                    <span id="jumpToTrial" class="text-blue-400 text-lg hover:underline cursor-pointer">Moddiy固件支持试用，点击下方申请试用开始试用~</span>
-                </div>
-            </div>
+                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+    <div class="flex items-start">
+        <i class="fa fa-check text-accent mt-1 mr-3"></i>
+        <!-- 修改文字颜色类名 -->
+        <span id="jumpToTrial" class="text-blue-400 text-lg hover:underline cursor-pointer">Moddiy固件支持试用，点我~</span>
+    </div>
+</div>
         </section>
 
         <!-- 服务规则区域 -->
@@ -276,7 +276,7 @@
                     </li>
                     <li class="flex items-start">
                         <i class="fa fa-info-circle text-accent mt-1 mr-2"></i>
-                        <span>主机若有WiFi网卡设备试用前需在BIOS中关闭WiFi</span>
+                        <span>带WiFi网卡设备试用前需在BIOS中关闭WiFi</span>
                     </li>
                 </ul>
             </div>
@@ -309,55 +309,55 @@
                 </ul>
             </div>
         </section>
-        <!-- 视频展示区域 -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto my-12">
-            <!-- 左侧视频 -->
-            <div class="aspect-video relative glass-effect p-4 rounded-lg">
-                <div class="overflow-hidden rounded-lg relative h-full">
-                    <video 
-                        class="absolute top-0 left-0 w-full h-full object-cover rounded-lg" 
-                        controls 
-                        autoplay 
-                        muted 
-                        loop
-                        data-src="video2.mp4"
-                    >
-                        您的浏览器不支持视频播放。
-                    </video>
-                </div>
-            </div>
-            <!-- 右侧视频 -->
-            <div class="aspect-video relative glass-effect p-4 rounded-lg">
-                <div class="overflow-hidden rounded-lg relative h-full">
-                    <video 
-                        class="absolute top-0 left-0 w-full h-full object-cover rounded-lg" 
-                        controls 
-                        autoplay 
-                        muted 
-                        loop
-                        data-src="video.mp4"
-                    >
-                        您的浏览器不支持视频播放。
-                    </video>
-                </div>
-            </div>
-        </section>
+<!-- 视频展示区域 -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto my-12">
+    <!-- 左侧视频 -->
+    <div class="aspect-video relative glass-effect p-4 rounded-lg">
+        <div class="overflow-hidden rounded-lg relative h-full">
+            <video 
+                class="absolute top-0 left-0 w-full h-full object-cover rounded-lg" 
+                controls 
+                autoplay 
+                muted 
+                loop
+            >
+                <source src="video2.mp4" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
+        </div>
+    </div>
+    <!-- 右侧视频 -->
+    <div class="aspect-video relative glass-effect p-4 rounded-lg">
+        <div class="overflow-hidden rounded-lg relative h-full">
+            <video 
+                class="absolute top-0 left-0 w-full h-full object-cover rounded-lg" 
+                controls 
+                autoplay 
+                muted 
+                loop
+            >
+                <source src="video.mp4" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
+        </div>
+    </div>
+</section>
 
-        <!-- 固件说明文案 -->
-        <section class="grid grid-cols-1 max-w-4xl mx-auto my-16 px-4 md:px-0">
-            <div class="glass-effect p-8 rounded-3xl space-y-6">
-                <div class="flex items-center gap-4">
-                    <i class="fa fa-info-circle text-accent text-3xl animate-icon-pulse"></i>
-                    <h2 class="text-2xl font-bold text-light tracking-wide">固件说明</h2>
-                </div>
-                <div class="text-textSecondary text-lg leading-relaxed">
-                    <p>
-                        固件经过多轮严格测试,已实现与各类主流设备的兼容，且能持续保障运行过程中的稳定。    
-                        支持所有游戏所有平台所有检测不会被检测到固件而拉闸。
-                    </p>
-                </div>
-            </div>
-        </section>
+       <!-- 固件说明文案 -->
+<section class="grid grid-cols-1 max-w-4xl mx-auto my-16 px-4 md:px-0">
+    <div class="glass-effect p-8 rounded-3xl space-y-6">
+        <div class="flex items-center gap-4">
+            <i class="fa fa-info-circle text-accent text-3xl animate-icon-pulse"></i>
+            <h2 class="text-2xl font-bold text-light tracking-wide">固件说明</h2>
+        </div>
+        <div class="text-textSecondary text-lg leading-relaxed">
+            <p>
+                固件经过多轮严格测试,已实现与各类主流设备的兼容，且能持续保障运行过程中的稳定。    
+                支持所有游戏所有平台所有检测不会被检测到固件而拉闸。
+            </p>
+        </div>
+    </div>
+</section>
 
         <!-- WiFi固件提示 -->
         <section class="glass-effect p-6 rounded-xl max-w-3xl mx-auto mt-12">
@@ -460,7 +460,7 @@
             <h2 class="text-2xl font-bold text-light mb-4">购买提示</h2>
             <div class="space-y-4 text-textSecondary">
                 <p>APEX、港瓦设备不保证可通过屏蔽检测</p>
-                <p class="text-accent font-bold">主机若有WiFi网卡设备试用前需在BIOS中关闭WiFi</p>
+                <p class="text-accent font-bold">主机带WiFi网卡设备试用前需在BIOS中关闭WiFi</p>
                 <p class="text-accent font-bold">请提供使用的是否是无盘系统丶无序，会提供相应可以加载的专属设备。</p>
                 <div class="text-center">
                     <a href="https://bios.fmc911.top" class="inline-block bg-transparent border-2 border-accent text-accent font-bold px-6 py-2 rounded-full text-lg hover:bg-accent/10 transition-all duration-300">
@@ -536,7 +536,7 @@
                 trailElements.push(trail);
             }
 
-            // 鼠标移动事件
+            // 鼠标移动处理
             document.addEventListener('mousemove', function(e) {
                 const x = e.clientX;
                 const y = e.clientY;
@@ -554,9 +554,9 @@
                         trail.style.opacity = 0.8 - index * 0.1;
                     }, delay);
                 });
-            });
+            }, { passive: false });
 
-            // 触摸移动事件
+            // 触摸支持（移动端）
             document.addEventListener('touchmove', function(e) {
                 if (e.touches.length > 0) {
                     const touch = e.touches[0];
@@ -604,14 +604,62 @@
                 });
             });
 
-            // 页面加载完成后加载视频
-            const videos = document.querySelectorAll('video[data-src]');
-            videos.forEach(video => {
-                const src = video.getAttribute('data-src');
-                if (src) {
-                    video.src = src;
-                    video.load();
+            // 滚动视差效果
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY;
+                document.querySelectorAll('.glass-effect').forEach((card, index) => {
+                    card.style.transform = `translateY(${scrollY * 0.01 - index * 5}px)`;
+                });
+            });
+
+            // 模态框交互逻辑
+            const applyTrialBtn = document.getElementById('applyTrial');
+            const trialModal = document.getElementById('trialModal');
+            const closeModalBtn = document.getElementById('closeModal');
+
+            applyTrialBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                trialModal.classList.remove('hidden');
+            });
+
+            closeModalBtn.addEventListener('click', function() {
+                trialModal.classList.add('hidden');
+            });
+
+            // 点击模态框外部关闭
+            window.addEventListener('click', function(e) {
+                if (e.target === trialModal) {
+                    trialModal.classList.add('hidden');
                 }
+            });
+
+            // 购买提示弹窗交互逻辑
+            const buyFirmwareBtn = document.getElementById('buyFirmware');
+            const buyPromptModal = document.getElementById('buyPromptModal');
+            const closeBuyPromptModalBtn = document.getElementById('closeBuyPromptModal');
+
+            buyFirmwareBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                buyPromptModal.classList.remove('hidden');
+            });
+
+            closeBuyPromptModalBtn.addEventListener('click', function() {
+                buyPromptModal.classList.add('hidden');
+            });
+
+            // 点击购买提示弹窗外部关闭
+            window.addEventListener('click', function(e) {
+                if (e.target === buyPromptModal) {
+                    buyPromptModal.classList.add('hidden');
+                }
+            });
+
+            const jumpToTrial = document.getElementById('jumpToTrial');
+            const trialModal2 = document.getElementById('trialModal');
+
+            jumpToTrial.addEventListener('click', function(e) {
+                e.preventDefault();
+                trialModal2.classList.remove('hidden');
             });
         });
     </script>
